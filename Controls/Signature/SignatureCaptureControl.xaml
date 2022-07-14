@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="VoterX.Utilities.Controls.SignatureCaptureControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoterX.Utilities.Controls"
+             xmlns:convert="clr-namespace:VoterX.Utilities.Converters"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d"
+             FontSize="{DynamicResource FontSizeNormal}">
+
+    <UserControl.Resources>
+        <convert:BooleanToVisibilityConverter x:Key="convVis" />
+        <convert:StringToVisibilityConverter x:Key="convStringVis" />
+    </UserControl.Resources>
+
+    <Grid Name="SignaturePadGrid" Grid.Row="2" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Name="EnablePad" HorizontalAlignment="Center" VerticalAlignment="Top" Width="250" Height="{DynamicResource ControlHeightNormal}" Margin="0,15,0,0" Padding="5" Style="{DynamicResource ModernButtonStyle}" 
+                Command="{Binding Path=EnablePadCommand}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Name="fa_pencil" Icon="Pencil" Foreground="{DynamicResource ApplicationForegroundColor}" Height="{DynamicResource faIconSizeSmall}" Width="{DynamicResource faIconSizeSmall}" Margin="0,1,10,0" />
+                <TextBlock Text="ENABLE SIGNATURE PAD" />
+            </StackPanel>
+        </Button>
+
+        <Border Grid.Row="1" Background="LightGray" BorderBrush="Black" Height="114" Width="184" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="1,1,1,1" CornerRadius="2" Margin="5" >
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="5" ShadowDepth="0" />
+            </Border.Effect>
+            <Image Name="VoterSignature" Height="110" Width="180" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Path=SignatureFile}" />
+        </Border>
+
+        <Button Grid.Row="2" Name="DeleteFile" HorizontalAlignment="Center" VerticalAlignment="Top" Width="250" Height="{DynamicResource ControlHeightNormal}" Padding="5" Style="{DynamicResource ModernButtonStyle}" 
+                Visibility="{Binding Path=SiteVerification, Converter={StaticResource convVis}}"
+                Command="{Binding Path=DeleteSignatureCommand}">
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Name="fa_eraser" Icon="Eraser" Foreground="{DynamicResource ApplicationForegroundColor}" Height="{DynamicResource faIconSizeNormal}" Width="{DynamicResource faIconSizeNormal}" Margin="0,0,10,0" />
+                <TextBlock Text="CLEAR SIGNATURE" />
+            </StackPanel>
+        </Button>
+
+        <StackPanel Grid.Row="3" Orientation="Vertical" Margin="20,15,20,0"
+                    Visibility="{Binding Path=SiteVerification, Converter={StaticResource convVis}}">
+            <TextBlock Text="{Binding Path=SignRefusedMessage}" TextWrapping="Wrap" Foreground="{DynamicResource ApplicationDangerColor}" />
+            <CheckBox Name="SignRefused" IsChecked="{Binding Path=SignRefused}" HorizontalAlignment="Left" Margin="12,0,0,0" Style="{DynamicResource CheckBoxStyleLarge20}" 
+                                    Command="{Binding Path=SignRefusedCommand}">
+                <TextBlock Text="{Binding Path=SignRefusedCheck}" Margin="0,0,0,0"/>
+            </CheckBox>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="VoterX.Utilities.Views.WizardTwoLevelSelectorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:local="clr-namespace:VoterX.Utilities.Views"
+             xmlns:b="clr-namespace:VoterX.Utilities.AttachedProperties"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             FontSize="{DynamicResource FontSizeSmall}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="{Binding ListLabel}" Grid.Row="0" Grid.Column="0" Margin="0,0,12,0" VerticalAlignment="Center" Padding="10,7,0,0" Height="36" Style="{DynamicResource ModernTextBlockLabel}" />
+
+        <ComboBox Name="CategoriesList" 
+                  Grid.Row="1"
+                  DisplayMemberPath="Category" 
+                  SelectedValuePath="Category"
+                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                  Height="36" Margin="0,5,12,0" Padding="10,5,0,0" 
+                  Style="{DynamicResource ComboBoxFlatStyle}"
+                  ToolTip="{Binding CategoryToolTip}"
+                  IsEnabled="{Binding IsEnabled}"
+                  ItemsSource="{Binding CategoryList}"
+                  SelectedItem="{Binding SelectedCategoryItem}"
+                  IsSynchronizedWithCurrentItem="True" >
+            <!-- FIRE SELECTION CHANGED EVENT -->
+            <!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectedCategoryChangedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>-->
+        </ComboBox>
+
+        <ListView Grid.Row="2" Grid.Column="0"
+                  Name="ItemList"
+                  Margin="0,0,12,0"
+                  FontSize="{DynamicResource FontSizeTiny}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  IsEnabled="{Binding IsEnabled}"
+                  ItemsSource="{Binding ItemsList, NotifyOnSourceUpdated=True}"
+                  SelectedItem = "{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="data:WizardSelectorItem">
+                    <Grid Margin="0,0,0,0" >
+                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="5,2,0,2" >
+                            <TextBlock Text="{Binding Value}" Visibility="Collapsed" />
+                            <TextBlock Text="{Binding Name}" Margin="0,0,0,0"  />
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="IsSelected" Value="{Binding Mode=TwoWay, Path=IsSelected}"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <!-- FIRE SELECTION CHANGED EVENT -->
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ListBox.Resources>
+                <!-- HIGHLIGHT LIST BOX SAMPES -->
+                <!-- https://stackoverflow.com/questions/7298282/listbox-selected-item-background -->
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}">#446cb3</SolidColorBrush>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}">#707070</SolidColorBrush>
+                <!-- STYLE TIGGER SAMPLES -->
+                <!-- https://stackoverflow.com/questions/541866/wpf-style-resource-for-foreground-color-of-selected-listbox-item -->
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="IsFocused" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Foreground" Value="White"/>
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.Resources>
+        </ListView>
+
+        <StackPanel Name="LogCodeLoadingPanel" Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,12,0,10" Visibility="Collapsed">
+            <TextBlock Text="Loading" Foreground="Black" />
+            <fa:ImageAwesome Name="LoadingSpinner" Icon="Spinner" Spin="True" Foreground="Black" Height="18" Width="18" Margin="5,3,0,0"/>
+        </StackPanel>
+
+        <Button Name="ClearListButton" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,5,0,5" Height="36" Padding="5" Style="{DynamicResource ModernButtonStyle}" Visibility="Visible" 
+                Command="{Binding ClearCommand}"
+                IsEnabled="{Binding IsEnabled}" >
+            <StackPanel Orientation="Horizontal">
+                <fa:ImageAwesome Name="fa_eraser" Icon="Eraser" Foreground="White" Height="20" Width="20" Margin="0,1,10,0" />
+                <TextBlock Text="{Binding ClearLabel}" />
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</UserControl>

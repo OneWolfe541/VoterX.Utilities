@@ -1,0 +1,47 @@
+﻿<utilities:SettingsBasePage x:Class="VoterX.Utilities.Views.Settings.ServersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VoterX.Utilities.Views.Settings"
+      xmlns:utilities="clr-namespace:VoterX.Utilities.BasePageDefinitions"
+      xmlns:fa="http://schemas.fontawesome.io/icons/"
+      mc:Ignorable="d"
+      FontSize="18">
+
+    <Grid Name="ServersGrid" Margin="0,5,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Servers" Grid.Row="0" Grid.Column="0" Margin="0,0,0,0" VerticalAlignment="Center" Height="42" Style="{DynamicResource ModernTextBlockLabel}"/>
+        <!--<TextBox Name="BallotPrinter" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"/>-->
+        <ComboBox Name="ServerList" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="42" SelectionChanged="ServerList_SelectionChanged" Loaded="ServerList_Loaded" Margin="5,0,0,0" Padding="5" DropDownOpened="ServerList_DropDownOpened" Style="{DynamicResource ComboBoxFlatStyle}">
+            <ComboBoxItem Name="LoadingServers" Content="Loading Servers" Visibility="Visible" ></ComboBoxItem>
+        </ComboBox>
+        <TextBlock Text="Current Server" Grid.Row="1" Grid.Column="0" Margin="0,5,0,0" VerticalAlignment="Center" Height="42" Style="{DynamicResource ModernTextBlockLabel}"/>
+        <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,0,0" Width="400" Height="42" Style="{DynamicResource ModernBorderTextBlockLabel}">
+            <TextBlock Name="CurrentServer" />
+        </Border>
+        <!--<TextBlock Name="CurrentServer" Grid.Row="1" Grid.Column="1" Margin="10,5,0,0" VerticalAlignment="Center"/>-->
+
+        <TextBlock Text="Databases" Grid.Row="2" Grid.Column="0" Margin="0,15,0,0" VerticalAlignment="Center" Height="42" Style="{DynamicResource ModernTextBlockLabel}"/>
+        <!--<TextBox Name="BallotPrinter" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0"/>-->
+        <ComboBox Name="DatabaseList" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="42" SelectionChanged="DatabaseList_SelectionChanged" Loaded="DatabaseList_Loaded" Margin="5,15,0,0" Padding="5" DropDownOpened="DatabaseList_DropDownOpened" Style="{DynamicResource ComboBoxFlatStyle}">
+        </ComboBox>
+        <TextBlock Text="Current Database" Grid.Row="3" Grid.Column="0" Margin="0,5,0,0" VerticalAlignment="Center" Height="42" Style="{DynamicResource ModernTextBlockLabel}"/>
+        <Border Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,0,0" Width="400" Height="42" Style="{DynamicResource ModernBorderTextBlockLabel}">
+            <TextBlock Name="CurrentDatabase2" Text="Hello Database" />
+        </Border>
+        <!--<TextBlock Name="CurrentDatabase" Text="Hello Database" Grid.Row="3" Grid.Column="1" Margin="10,0,0,0" VerticalAlignment="Center"/>-->
+
+
+    </Grid>
+</utilities:SettingsBasePage>

@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AF52EF61-330E-46BA-B160-93D6309EDC76}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ElectionPeople.StateAutoVote.Utilities</RootNamespace>
+    <AssemblyName>ElectionPeople.StateAutoVote.Utilities</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AmbirSigPadLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\repos\AmbirSigPadLibrary\AmbirSigPadLibrary\bin\Debug\AmbirSigPadLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="ElectionPeople.NMStateElection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport">
+      <HintPath>ThirdParty\FastReport.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Bars">
+      <HintPath>ThirdParty\FastReport.Bars.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Editor">
+      <HintPath>ThirdParty\FastReport.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="FastReport.Web">
+      <HintPath>ThirdParty\FastReport.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteVCC\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.eSign3">
+      <HintPath>ThirdParty\Interop.eSign3.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.PRINTEROCXLib">
+      <HintPath>ThirdParty\Interop.PRINTEROCXLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="libpdfNET, Version=5.9.0.0, Culture=neutral, PublicKeyToken=de6610a347b79ec0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ElectionPeople.StateAutoVoteVCC\ElectionPeople.StateAutoVoteVCC\Dependencies\libpdfNET.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.ConnectionInfo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteABS\packages\Unofficial.Microsoft.SQLServer.SMO.11.0.3000.0\lib\Microsoft.SqlServer.ConnectionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.Sdk.Sfc, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteABS\packages\Unofficial.Microsoft.SQLServer.SMO.11.0.3000.0\lib\Microsoft.SqlServer.Management.Sdk.Sfc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Smo, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteABS\packages\Unofficial.Microsoft.SQLServer.SMO.11.0.3000.0\lib\Microsoft.SqlServer.Smo.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SmoExtended, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteABS\packages\Unofficial.Microsoft.SQLServer.SMO.11.0.3000.0\lib\Microsoft.SqlServer.SmoExtended.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.SqlEnum, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\ElectionPeople.StateAutoVoteABS\packages\Unofficial.Microsoft.SQLServer.SMO.11.0.3000.0\lib\Microsoft.SqlServer.SqlEnum.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfPrintNET, Version=5.9.0.0, Culture=neutral, PublicKeyToken=de6610a347b79ec0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ElectionPeople.StateAutoVoteVCC\ElectionPeople.StateAutoVoteVCC\Dependencies\PdfPrintNET.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RendererNET, Version=5.9.0.0, Culture=neutral, PublicKeyToken=de6610a347b79ec0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ElectionPeople.StateAutoVoteVCC\ElectionPeople.StateAutoVoteVCC\Dependencies\RendererNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" ExcludeAssets="All" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\JpegMetadataAdapter.cs" />
+    <Compile Include="AttachedProperties\ListBoxBehaviors.cs" />
+    <Compile Include="BasePageDefinitions\MasterBasePage_old.cs" />
+    <Compile Include="BasePageDefinitions\MasterBasePage.cs" />
+    <Compile Include="BasePageDefinitions\MenuBasePage.cs" />
+    <Compile Include="BasePageDefinitions\SettingsBasePage.cs" />
+    <Compile Include="Commands\NotifyPropertyChanged.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Controls\MenuButtons\IMenuButtonViewModel.cs" />
+    <Compile Include="Controls\MenuButtons\MenuButton.xaml.cs">
+      <DependentUpon>MenuButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MenuButtons\MenuButtonFactory.cs" />
+    <Compile Include="Controls\MenuButtons\MenuButtonList.cs" />
+    <Compile Include="Controls\MenuButtons\MenuButtonViewModel.cs" />
+    <Compile Include="Controls\PrintVerification\PrintVerificationQuestionnaireControl.xaml.cs">
+      <DependentUpon>PrintVerificationQuestionnaireControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PrintVerification\PrintVerificationQuestionnaireViewModel.cs" />
+    <Compile Include="Controls\Signature\SignatureCaptureControl.xaml.cs">
+      <DependentUpon>SignatureCaptureControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Signature\SignatureControlViewModel.cs" />
+    <Compile Include="Controls\SliderMenu\SliderMenuFrameControl.xaml.cs">
+      <DependentUpon>SliderMenuFrameControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StatusIcons\Base\IStatusIconControlBase.cs" />
+    <Compile Include="Controls\StatusIcons\Base\StatusIconControlBase.cs" />
+    <Compile Include="Controls\StatusIcons\Database\DatabaseStatusControl.xaml.cs">
+      <DependentUpon>DatabaseStatusControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StatusIcons\Database\DatabaseStatusViewModel.cs" />
+    <Compile Include="Controls\StatusIcons\Printer\PrinterStatusControl.xaml.cs">
+      <DependentUpon>PrinterStatusControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StatusIcons\Printer\PrinterStatusViewModel.cs" />
+    <Compile Include="Controls\StatusIcons\SignaturePad\SignaturePadStatusControl.xaml.cs">
+      <DependentUpon>SignaturePadStatusControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\StatusIcons\SignaturePad\SignaturePadStatusViewModel.cs" />
+    <Compile Include="Controls\YesNoQuestion\YesNoQuestionControlMVVM.xaml.cs">
+      <DependentUpon>YesNoQuestionControlMVVM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\YesNoQuestion\YesNoQuestionViewModel.cs" />
+    <Compile Include="Converters\IconColorConverter.cs" />
+    <Compile Include="Converters\IsNullConverters.cs" />
+    <Compile Include="Converters\MathConverters.cs" />
+    <Compile Include="Converters\TextColorConverter.cs" />
+    <Compile Include="Converters\VisibilityConverter.cs" />
+    <Compile Include="Dialogs\SystemIdleDialog.xaml.cs">
+      <DependentUpon>SystemIdleDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\HelpDialog.xaml.cs">
+      <DependentUpon>HelpDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ReportPreviewWindow.xaml.cs">
+      <DependentUpon>ReportPreviewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\OkCancelDialog.xaml.cs">
+      <DependentUpon>OkCancelDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AreYouSureDialog.xaml.cs">
+      <DependentUpon>AreYouSureDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\YesNoDialog.xaml.cs">
+      <DependentUpon>YesNoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ValidationDialog.xaml.cs">
+      <DependentUpon>ValidationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AlertDialog.xaml.cs">
+      <DependentUpon>AlertDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Exceptions\CustomException.cs" />
+    <Compile Include="Extensions\ComboBoxExtensions.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
+    <Compile Include="Extensions\FileIOExtensions.cs" />
+    <Compile Include="Extensions\FocusExtension.cs" />
+    <Compile Include="Extensions\GridPanelExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\PageExtensions.cs" />
+    <Compile Include="Extensions\RegexExtensions.cs" />
+    <Compile Include="Extensions\StoryboardExtensions.cs" />
+    <Compile Include="Extensions\VoterExtensions.cs" />
+    <Compile Include="Extensions\Windows10.cs" />
+    <Compile Include="Extensions\WizardSelectorExtensions.cs" />
+    <Compile Include="Factories\WizardSelectorFactory.cs" />
+    <Compile Include="Interfaces\IMenuViewModel.cs" />
+    <Compile Include="Interfaces\IReports.cs" />
+    <Compile Include="Logging\AutoVoteLogger.cs" />
+    <Compile Include="Methods\AmbirSignatureMethods.cs" />
+    <Compile Include="Methods\AsyncUtilities.cs" />
+    <Compile Include="Methods\BallotPrintingMethods.cs" />
+    <Compile Include="Methods\BallotStyleMethods.cs" />
+    <Compile Include="Methods\ComboBoxMethods.cs" />
+    <Compile Include="Methods\FastReportsMethods.cs" />
+    <Compile Include="Methods\NavigationMethods.cs" />
+    <Compile Include="Methods\PartyMethods.cs" />
+    <Compile Include="Methods\PDFToolsMethods.cs" />
+    <Compile Include="Methods\PollWorkerMethods.cs" />
+    <Compile Include="Methods\PrecinctMethods.cs" />
+    <Compile Include="Methods\PrinterStatusMethods.cs" />
+    <Compile Include="Methods\ReportPrintingMethods.cs" />
+    <Compile Include="Methods\ServerMethods.cs" />
+    <Compile Include="Methods\SignatureMethods.cs" />
+    <Compile Include="Methods\SQLConnectionFinder.cs" />
+    <Compile Include="Methods\StatusBarMethods.cs" />
+    <Compile Include="Methods\UIServices.cs" />
+    <Compile Include="Methods\VoterManagmentMethods.cs" />
+    <Compile Include="Methods\VoterValidationMethods.cs" />
+    <Compile Include="Models\ActivityDateModel.cs" />
+    <Compile Include="Models\Enums\MenuCollapseMode.cs" />
+    <Compile Include="Models\Enums\ReportModes.cs" />
+    <Compile Include="Models\PaperSizeModel.cs" />
+    <Compile Include="Models\PrinterTrayModel.cs" />
+    <Compile Include="Models\StatusIconModels.cs" />
+    <Compile Include="Models\WizardSelectorItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\Models\GenericReport.cs" />
+    <Compile Include="Reports\Objects\IReport.cs" />
+    <Compile Include="Reports\Queries\ReportQueries.cs" />
+    <Compile Include="Timers\ClientIdleHandler.cs" />
+    <Compile Include="Timers\IdleTimer.cs" />
+    <Compile Include="UserControls\SettingsTabControl.xaml.cs">
+      <DependentUpon>SettingsTabControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SignatureUWPControl.xaml.cs">
+      <DependentUpon>SignatureUWPControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SignatureControl.xaml.cs">
+      <DependentUpon>SignatureControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SliderMenuFrameControl.xaml.cs">
+      <DependentUpon>SliderMenuFrameControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SliderMenuControl.xaml.cs">
+      <DependentUpon>SliderMenuControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatusBarControl.xaml.cs">
+      <DependentUpon>StatusBarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\VoterListControl.xaml.cs">
+      <DependentUpon>VoterListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\YesNoQuestionControl.xaml.cs">
+      <DependentUpon>YesNoQuestionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainHeader\MainHeaderControl.xaml.cs">
+      <DependentUpon>MainHeaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainHeader\MainHeaderViewModel.cs" />
+    <Compile Include="Views\Menus\DynamicMenuView.xaml.cs">
+      <DependentUpon>DynamicMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\BallotsPage.xaml.cs">
+      <DependentUpon>BallotsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\TabulatorsPage.xaml.cs">
+      <DependentUpon>TabulatorsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\ElectionPage.xaml.cs">
+      <DependentUpon>ElectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\ServersPage.xaml.cs">
+      <DependentUpon>ServersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\PrintersPage.xaml.cs">
+      <DependentUpon>PrintersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\NetworkPage.xaml.cs">
+      <DependentUpon>NetworkPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SystemPage.xaml.cs">
+      <DependentUpon>SystemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusBar\StatusBarControl.xaml.cs">
+      <DependentUpon>StatusBarControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatusBar\StatusBarViewModel.cs" />
+    <Compile Include="Views\VoterDetails\VoterDetailsView.xaml.cs">
+      <DependentUpon>VoterDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VoterDetails\VoterDetailsViewModel.cs" />
+    <Compile Include="Views\VoterList\VoterListView.xaml.cs">
+      <DependentUpon>VoterListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VoterList\VoterListViewModel.cs" />
+    <Compile Include="Views\VoterSearch\VoterSearchNameView.xaml.cs">
+      <DependentUpon>VoterSearchNameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VoterSearch\VoterSearchNameViewModel.cs" />
+    <Compile Include="Views\VoterSearch\VoterSearchScanView.xaml.cs">
+      <DependentUpon>VoterSearchScanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VoterSearch\VoterSearchScanViewModel.cs" />
+    <Compile Include="Views\VoterSearch\VoterSearchView.xaml.cs">
+      <DependentUpon>VoterSearchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VoterSearch\VoterSearchViewModel.cs" />
+    <Compile Include="Views\WizardSelector\WizardSelectorView.xaml.cs">
+      <DependentUpon>WizardSelectorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WizardSelector\WizardSelectorViewModel.cs" />
+    <Compile Include="Views\WizardSelector\WizardTwoLevelSelectorView.xaml.cs">
+      <DependentUpon>WizardTwoLevelSelectorView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ElectionPeople.StateAutoVote.Core\ElectionPeople.StateAutoVote.Core\ElectionPeople.StateAutoVote.Core.csproj">
+      <Project>{658a945a-0fc9-4a6f-8993-303b6dbb1b0b}</Project>
+      <Name>ElectionPeople.StateAutoVote.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ElectionPeople.StateAutoVote.SystemSettings\ElectionPeople.StateAutoVote.SystemSettings\ElectionPeople.StateAutoVote.SystemSettings.csproj">
+      <Project>{504642f1-47da-4a7d-9b55-edbfb13fbd57}</Project>
+      <Name>ElectionPeople.StateAutoVote.SystemSettings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ElectionPeople.StateAutoVoteVCC\ElectionPeople.StateAutoVoteVCC\ElectionPeople.StateAutoVoteVCC.csproj">
+      <Project>{E3E18197-3C2E-419E-91A6-C27938DCCBAF}</Project>
+      <Name>ElectionPeople.StateAutoVoteVCC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\MenuButtons\MenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PrintVerification\PrintVerificationQuestionnaireControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Signature\SignatureCaptureControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SliderMenu\SliderMenuFrameControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StatusIcons\Database\DatabaseStatusControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StatusIcons\Printer\PrinterStatusControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\StatusIcons\SignaturePad\SignaturePadStatusControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\YesNoQuestion\YesNoQuestionControlMVVM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SystemIdleDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\HelpDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ReportPreviewWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\OkCancelDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AreYouSureDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\YesNoDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ValidationDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AlertDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SettingsTabControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SignatureUWPControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SignatureControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SliderMenuFrameControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\SliderMenuControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\StatusBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\VoterListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\YesNoQuestionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainHeader\MainHeaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Menus\DynamicMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\BallotsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\TabulatorsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\ElectionPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\ServersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\UserPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\PrintersPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\NetworkPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\SystemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StatusBar\StatusBarControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VoterDetails\VoterDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VoterList\VoterListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VoterSearch\VoterSearchNameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VoterSearch\VoterSearchScanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VoterSearch\VoterSearchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WizardSelector\WizardSelectorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WizardSelector\WizardTwoLevelSelectorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\AutoVote 12.0.3.0\AutoVote 12.0.3.0\Images\favicon-exclamation.ico">
+      <Link>Images\favicon-exclamation.ico</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\ElectionPeople.StateAutoVote.Utilities.dll"  "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\ThirdParty\PdfPrintAPI.dll"  "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\ElectionPeople.NMStateElectionEntities.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.Bars.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.Editor.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.Web.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FontAwesome.WPF.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\Interop.eSign3.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\libpdfNET.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\netstandard.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\PdfPrintNET.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\RendererNET.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\stdole.dll" "$(SolutionDir)\ElectionPeople.StateAutoVoteVCC\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\ElectionPeople.StateAutoVote.Utilities.dll"  "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\ThirdParty\PdfPrintAPI.dll"  "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\ElectionPeople.NMStateElectionEntities.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.Bars.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.Editor.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FastReport.Web.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\FontAwesome.WPF.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\Interop.eSign3.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\libpdfNET.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\netstandard.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\PdfPrintNET.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\RendererNET.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"
+xcopy /d/s/i/y "$(ProjectDir)bin\$(ConfigurationName)\stdole.dll" "$(SolutionDir)\..\ElectionPeople.StateAutoVoteABS\ElectionPeople.StateAutoVoteABS\Dependencies"</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\ElectionPeople.StateAutoVoteVCC\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

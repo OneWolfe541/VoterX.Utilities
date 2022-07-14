@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="VoterX.Utilities.UserControls.SliderMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:VoterX.Utilities.UserControls"
+             mc:Ignorable="d"
+             Name="MenuControl"
+             Width="0"
+             DataContext = "Close">
+    <!--<UserControl.Style>
+        <Style TargetType="{x:Type UserControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>-->
+                        <Grid>
+                            <Grid.RowDefinitions>                                
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Name="MenuSlider" Grid.Row="0" BorderBrush="{DynamicResource ApplicationPrimaryColor}" Background="{DynamicResource ApplicationPrimaryColor}" BorderThickness="0" HorizontalAlignment="Stretch" DataContext="Close" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <ContentPresenter Grid.Row="0" Name="TopContentControl" Content="{Binding TopContent, ElementName=MenuControl}" />
+                                    <ContentPresenter Grid.Row="1" Name="MiddleContentControl" Content="{Binding MiddleContent, ElementName=MenuControl}"  />
+                                    <ContentPresenter Grid.Row="2" Name="BottomContentControl" Content="{Binding BottomContent, ElementName=MenuControl}"  />
+                                </Grid>                                
+                            </Border>                            
+                        </Grid>
+                    <!--</ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Style>-->
+</UserControl>
